@@ -1,0 +1,27 @@
+{% extends "delivery/base.html" %}
+{% block content %}
+<h2 style="text-align:center;">Payment for {{ restaurant.name }}</h2>
+<ul style="max-width:360px;margin:0 auto;">
+  {% for i in items %}
+    <li>{{ i.name }} - ₹{{ i.price }}</li>
+  {% endfor %}
+</ul>
+<p style="text-align:center;">Total: <b>₹{{ total }}</b></p>
+
+<!-- Razorpay Payment Button -->
+<form id="razorpay-form" method="POST">
+  {% csrf_token %}
+  <script
+    src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="{{ razorpay_merchant_key }}"
+    data-amount="{{ razorpay_amount }}"
+    data-currency="{{ currency }}"
+    data-order_id="{{ razorpay_order_id }}"
+    data-buttontext="Pay Now"
+    data-name="MealMate - {{ restaurant.name }}"
+    data-description="Order Payment"
+    data-theme.color="#F43F5E"
+    data-callback_url="{{ callback_url }}"
+  ></script>
+</form>
+{% endblock %}

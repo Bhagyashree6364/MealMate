@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MealMate</title>
+    <style>
+        body {
+            background: #fff7f0;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+        header {
+            background: #ff3366;
+            padding: 0.8em 0;
+            box-shadow: 0 4px 14px #fae1ef9c;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 2em;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: color 0.21s;
+        }
+        nav a:hover { color: #ffd390; }
+        h1 {
+            text-align: center;
+            margin: 2.0em 0 0.4em 0;
+            font-size: 3em;
+            color: #ff3366;
+            letter-spacing: 2px;
+        }
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2em 0;
+        }
+        .restaurant-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2em;
+            justify-content: center;
+            margin-top: 1.5em;
+        }
+        .restaurant-card {
+            background: linear-gradient(120deg, #ffe2e9 50%, #b3f8ff 100%);
+            border-radius: 15px;
+            width: 230px;
+            text-align: center;
+            box-shadow: 0 4px 16px #fdb1cc17;
+            padding: 1.7em 1.2em;
+            cursor: pointer;
+            transition: transform .19s, box-shadow .17s;
+        }
+        .restaurant-card:hover {
+            box-shadow: 0 8px 34px #ffd6f399;
+            transform: scale(1.045) translateY(-7px);
+        }
+        .restaurant-name {
+            font-size: 1.34em;
+            color: #ff3366;
+            font-weight: bold;
+        }
+        .restaurant-address {
+            color: #2d3748;
+            font-size: .98em;
+            margin-top: .3em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+    <ul>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'view_cart' %}">Cart</a></li>
+{% if user.is_authenticated %}
+    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" style="background:none; border:none; color:inherit; font:inherit; cursor:pointer;">
+            Logout
+        </button>
+    </form>
+{% endif %}
+    </ul>
+</nav>
+</header>
+    {% if user.is_authenticated %}
+  <h1>Welcome, {{ user.username }}!</h1>
+{% else %}
+  <h1>Welcome to MealMate</h1>
+{% endif %}
+    <main>{% block content %}{% endblock %}</main>
+</body>
+</html>

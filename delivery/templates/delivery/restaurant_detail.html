@@ -1,0 +1,15 @@
+{% extends 'delivery/base.html' %}
+{% block content %}
+<h1>{{ restaurant.name }}</h1>
+<p><strong>Phone:</strong> {{ restaurant.phone }}</p>
+<p><strong>Address:</strong> {{ restaurant.address }}</p>
+<h2>Menu</h2>
+<ul>
+    {% for item in menu_items %}
+        <li>{{ item.name }} – ₹{{ item.price }} 
+            <a href="{% url 'place_order' item.id %}">Order Now</a></li>
+    {% empty %}
+        <li>No items found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
