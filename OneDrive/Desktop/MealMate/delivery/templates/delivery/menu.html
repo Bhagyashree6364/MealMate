@@ -1,0 +1,17 @@
+{% extends "delivery/base.html" %}
+{% block content %}
+<h2 style="text-align:center;">{{ restaurant.name }} - Menu</h2>
+<ul style="list-style:none;padding:0;">
+    {% for m in menu %}
+      <li style="margin-bottom:22px;">
+        <label style="font-size:1.2em;">
+            {{ m.name }} <span style="color:#be185d;font-weight:bold;">₹{{ m.price }}</span>
+        </label>
+      </li>
+    {% endfor %}
+</ul>
+<!-- Add an order button that goes to the order page -->
+<form method="get" action="{% url 'place_order' restaurant.id %}">
+    <button type="submit" class="order-btn" style="width:100%;">Place Order</button>
+</form>
+{% endblock %}

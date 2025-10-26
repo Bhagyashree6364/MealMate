@@ -1,0 +1,14 @@
+{% extends "delivery/base.html" %}
+{% block content %}
+<p style="text-align:center;font-size:1.2em;color:#333;">
+    Discover and order from the best restaurants in your city 🍴
+</p>
+<div class="restaurant-grid">
+    {% for rest in restaurants %}
+        <div class="restaurant-card" onclick="window.location.href='{% url 'restaurant_menu' rest.id %}'">
+            <div class="restaurant-name">{{ rest.name }}</div>
+            <div class="restaurant-address">{{ rest.address }}</div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
