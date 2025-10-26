@@ -1,0 +1,22 @@
+{% extends 'delivery/base.html' %}
+{% block content %}
+<h2>My Orders</h2>
+{% if orders %}
+<ul>
+    {% for order in orders %}
+        <li>
+            {{ order.menu_item.name }} x {{ order.quantity }} <br>
+            Delivery Address: {{ order.delivery_address }} <br>
+            Number: {{ order.number }} <br>
+            {% if order.is_paid %}
+                <strong>Paid</strong>
+            {% else %}
+                <strong>Pending Payment</strong>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>You have not placed any orders yet.</p>
+{% endif %}
+{% endblock %}

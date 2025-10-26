@@ -1,0 +1,12 @@
+body { font-family: Arial, sans-serif; background-color: #f9fafb; margin: 0; padding: 0; }
+nav { background-color: #007bff; padding: 10px; }
+nav a { color: white; margin-right: 20px; text-decoration: none; font-weight: bold; }
+nav a:hover { text-decoration: underline; }
+.container { max-width: 900px; margin: auto; background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
+h1, h2 { color: #007bff; }
+button { padding: 8px 15px; border: none; background-color: #007bff; color: white; border-radius: 6px; cursor: pointer; }
+button:hover { background-color: #0056b3; }
+.messages { list-style: none; padding: 0; }
+.messages li { padding: 10px; margin-bottom: 5px; border-radius: 4px; }
+.messages li.info { background-color: #cce5ff; color: #004085; }
+.messages li.error { background-color: #f8d7da; color: #721c24; }

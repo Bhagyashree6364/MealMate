@@ -1,0 +1,10 @@
+{% extends "delivery/base.html" %}
+
+{% block content %}
+<h2>Edit Profile</h2>
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
